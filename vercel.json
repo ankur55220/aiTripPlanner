@@ -1,8 +1,8 @@
 {
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/create-trip", "destination": "/index.html" },
+    { "source": "/generated-trips", "destination": "/index.html" },
+    { "source": "/view-trip/:id", "destination": "/index.html" }
   ]
 }

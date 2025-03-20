@@ -44,7 +44,7 @@ function Header() {
             user && user!="undefined" &&
             (<>
             <Button className='cursor-pointer bg-yellow-800 ' onClick={()=>navigate('/create-trip')}>Create trip</Button>
-            <Button className='cursor-pointer bg-yellow-800' onClick={()=>navigate('/generated-trips')}>My trips</Button>
+            <Button className='cursor-pointer bg-yellow-800 ' onClick={()=>navigate('/generated-trips')}>Generated trips</Button>
             </>)
             
           }
