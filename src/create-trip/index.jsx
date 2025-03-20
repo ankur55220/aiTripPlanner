@@ -182,7 +182,7 @@ function CreateTrip() {
         
         if (searchResponse.data?.results?.[0]?.photos?.[0]?.photo_reference) {
           const photoRef = searchResponse.data.results[0].photos[0].photo_reference;
-          const photoUrl = `/api/places/photo?maxwidth=800&photo_reference=${photoRef}`;
+          const photoUrl = `${import.meta.env.VITE_API_KEY}/api/places/photo?maxwidth=800&photo_reference=${photoRef}`;
           return photoUrl;
         }
         return null;
