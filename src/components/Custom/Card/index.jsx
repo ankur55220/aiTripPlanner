@@ -10,17 +10,15 @@ import {
 
 function CustomCard({ icon, title, description,selected,onClicked }) {
   return (
-    <Card className={`hover:shadow-2xs text-center cursor-pointer ${selected && "border-2 border-ring"}`} onClick={onClicked}>
-  <CardHeader>
-    <CardTitle className="font-bold text-3xl flex justify-center">{icon}</CardTitle>
-    <CardDescription className="font-bold text-black">{title}</CardDescription>
-  </CardHeader>
-  <CardContent>
-    <p className='text-muted-foreground text-sm'>{description}</p>
-  </CardContent>
- 
-</Card>
-
+    <Card className={`hover:shadow-2xs text-center cursor-pointer w-full h-full ${selected && "border-2 border-ring"}`} onClick={onClicked}>
+      <CardHeader className="p-4 md:p-6">
+        <CardTitle className="font-bold text-2xl md:text-3xl flex justify-center">{icon}</CardTitle>
+        <CardDescription className="font-bold text-black text-sm md:text-base mt-2">{title}</CardDescription>
+      </CardHeader>
+      <CardContent className="p-4 md:p-6 pt-0 md:pt-0">
+        <p className='text-muted-foreground text-xs md:text-sm'>{description}</p>
+      </CardContent>
+    </Card>
   )
 }
 

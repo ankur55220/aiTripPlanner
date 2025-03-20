@@ -305,13 +305,13 @@ function CreateTrip() {
 
  
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center px-4 md:px-6">
       <Toaster/>
       
-      <h1 className="font-bold text-3xl text-center mt-5 leading-15">Tell us your travel preferences</h1>
-      <p className="text-muted-foreground text-center">Just provide us with a few details and we'll generate a list of places to visit based on your preferences.</p>
-      <div className="flex flex-col justify-start items-center w-[45rem]  mt-15">
-        <div className="w-[45rem]">
+      <h1 className="font-bold text-2xl md:text-3xl text-center mt-5 leading-15">Tell us your travel preferences</h1>
+      <p className="text-muted-foreground text-center text-sm md:text-base px-2">Just provide us with a few details and we'll generate a list of places to visit based on your preferences.</p>
+      <div className="flex flex-col justify-start items-center w-full max-w-[45rem] mt-10 md:mt-15">
+        <div className="w-full">
         <h3 className="font-bold mb-3">What is destination of choice?</h3>
         <GooglePlacesAutocomplete 
         className="w-full"
@@ -330,26 +330,42 @@ function CreateTrip() {
         />
       
         </div>
-        <div className="mt-10">
+        <div className="mt-8 md:mt-10 w-full">
         <h3 className="font-bold mb-3">How many days are you planning your trip?</h3>
         <Input 
           type="number" 
           value={data?.days || ""} 
           onChange={(e)=>updateData("days", e.target.value)} 
-          className="w-[45rem]" 
+          className="w-full" 
           placeholder="ex.3(max 7)"
           min={1}
           max={7}
         />
-
         </div>
-        <div className="mt-10">
-        <h3 className="font-bold mb-3">How much money are you planning to spend?</h3>
-        <div className="flex justify-start items-center gap-x-8  w-[45rem]">
-        <CustomCard icon={<FcMoneyTransfer/>} selected={data?.budget==="Cheap"} title={"Cheap"} description="Stay conscious of costs" onClicked={()=>updateData("budget","Cheap")}/>
-        <CustomCard icon={<GiPayMoney />} selected={data?.budget==="Moderate"} title={"Moderate"} description="Keep cost on the average side" onClicked={()=>updateData("budget","Moderate")}/>
-        <CustomCard icon={<GiTakeMyMoney/>} selected={data?.budget==="Luxury"} title={"Luxury"} description="Dont worry about the cost" onClicked={()=>updateData("budget","Luxury")}/>
-
+        <div className="mt-8 md:mt-10 w-full">
+        <h3 className="font-bold mb-3">What's your budget range per day?</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+          <CustomCard 
+            icon={<FcMoneyTransfer/>} 
+            selected={data?.budget==="Cheap"} 
+            title={"Cheap"} 
+            description="Stay conscious of costs" 
+            onClicked={()=>updateData("budget","Cheap")}
+          />
+          <CustomCard 
+            icon={<GiPayMoney />} 
+            selected={data?.budget==="Moderate"} 
+            title={"Moderate"} 
+            description="Keep cost on the average side" 
+            onClicked={()=>updateData("budget","Moderate")}
+          />
+          <CustomCard 
+            icon={<GiTakeMyMoney/>} 
+            selected={data?.budget==="Luxury"} 
+            title={"Luxury"} 
+            description="Dont worry about the cost" 
+            onClicked={()=>updateData("budget","Luxury")}
+          />
         </div>
         </div>
        
@@ -357,18 +373,40 @@ function CreateTrip() {
       </div>
 
      
-        <div className="mt-10">
-        <h3 className="font-bold mb-3">Who do you plan on travelling with on your next adventure?</h3>
-        <div className="flex justify-start items-center gap-x-8  w-[45rem]">
-        <CustomCard icon={<BsAirplaneEnginesFill/>} selected={data?.travellers==="single"} title={"Just me"} description="A sole traveles in exploration" onClicked={()=>updateData("travellers","single")}/>
-        <CustomCard icon={<FaChampagneGlasses />} selected={data?.travellers==="couple"} title={"A couple"} description="Two travellers in tandem" onClicked={()=>updateData("travellers","couple")}/>
-        <CustomCard icon={<MdFamilyRestroom/>} selected={data?.travellers==="family"} title={"Family"} description="Three or more people" onClicked={()=>updateData("travellers","family")}/>
-        <CustomCard icon={<GiThreeFriends/>} selected={data?.travellers==="friends"} title={"Friends"} description="A bunch of thrill-seekers" onClicked={()=>updateData("travellers","friends")}/>
-
-
+        <div className="mt-8 md:mt-10 w-full max-w-[45rem]">
+        <h3 className="font-bold mb-3">Who do you plan on travelling with?</h3>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 w-full">
+          <CustomCard 
+            icon={<BsAirplaneEnginesFill/>} 
+            selected={data?.travellers==="single"} 
+            title={"Just me"} 
+            description="A sole traveles in exploration" 
+            onClicked={()=>updateData("travellers","single")}
+          />
+          <CustomCard 
+            icon={<FaChampagneGlasses />} 
+            selected={data?.travellers==="couple"} 
+            title={"A couple"} 
+            description="Two travellers in tandem" 
+            onClicked={()=>updateData("travellers","couple")}
+          />
+          <CustomCard 
+            icon={<MdFamilyRestroom/>} 
+            selected={data?.travellers==="family"} 
+            title={"Family"} 
+            description="Three or more people" 
+            onClicked={()=>updateData("travellers","family")}
+          />
+          <CustomCard 
+            icon={<GiThreeFriends/>} 
+            selected={data?.travellers==="friends"} 
+            title={"Friends"} 
+            description="A bunch of thrill-seekers" 
+            onClicked={()=>updateData("travellers","friends")}
+          />
         </div>
         </div>
-        <div className="my-8 flex justify-center w-[45rem] "> <Button className="cursor-pointer" disabled={loading} onClick={()=>{
+        <div className="my-8 flex justify-center w-full "> <Button className="cursor-pointer" disabled={loading} onClick={()=>{
 
 if(!data?.budget || !data?.days || !data?.travellers || !data?.destination){
   toast("Please fill all the fields");
