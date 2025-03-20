@@ -34,27 +34,25 @@ function Header() {
 
 
   return (
-    <div className='flex justify-between items-center w-full shadow-sm border-b px-10 py-4'>
+    <div className='flex justify-between items-center w-full shadow-sm border-b px-4 md:px-10 py-4'>
 
-        <div className='w-45'>
-            <img src="/logo.svg" alt="logo"   />
+        <div className='w-32 md:w-45 flex-shrink-0'>
+            <img src="/logo.svg" alt="logo" className="w-full h-auto" />
         </div>
-        <div className='flex gap-2'>
+        <div className='flex items-center gap-2 flex-wrap justify-end'>
           {
             user && user!="undefined" &&
-            (<>
-            <Button className='cursor-pointer bg-yellow-800 ' onClick={()=>navigate('/create-trip')}>Create trip</Button>
-            <Button className='cursor-pointer bg-yellow-800 ' onClick={()=>navigate('/generated-trips')}>Generated trips</Button>
-            </>)
-            
+            (<div className="flex gap-2 flex-wrap">
+              <Button className='cursor-pointer bg-yellow-800 text-sm md:text-base whitespace-nowrap' onClick={()=>navigate('/create-trip')}>Create trip</Button>
+              <Button className='cursor-pointer bg-yellow-800 text-sm md:text-base whitespace-nowrap' onClick={()=>navigate('/generated-trips')}>Generated trips</Button>
+            </div>)
           }
           {
             user && user!="undefined" ?
-            <div>
-              <img className='w-10 h-10 rounded-full cursor-pointer' src={JSON.parse(user).picture} alt="profile" onClick={()=>setDialogOpen(true)}/>
-              
+            <div className="flex-shrink-0">
+              <img className='w-8 h-8 md:w-10 md:h-10 rounded-full cursor-pointer' src={JSON.parse(user).picture} alt="profile" onClick={()=>setDialogOpen(true)}/>
             </div>:
-            <Button onClick={()=>setDialogOpen(true)} className="cursor-pointer">Sign in</Button>
+            <Button onClick={()=>setDialogOpen(true)} className="cursor-pointer text-sm md:text-base whitespace-nowrap">Sign in</Button>
           }
         </div>
 
