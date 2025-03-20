@@ -178,11 +178,11 @@ function CreateTrip() {
           })
         });
 
-        const searchResponse = await axios.get(`${import.meta.env.VITE_API_KRY}/api/places/textsearch?${params}`);
+        const searchResponse = await axios.get(`${import.meta.env.VITE_API_KEY}/api/places/textsearch?${params}`);
         
         if (searchResponse.data?.results?.[0]?.photos?.[0]?.photo_reference) {
           const photoRef = searchResponse.data.results[0].photos[0].photo_reference;
-          const photoUrl = `${import.meta.env.VITE_API_KRY}/api/places/photo?maxwidth=800&photo_reference=${photoRef}`;
+          const photoUrl = `${import.meta.env.VITE_API_KEY}/api/places/photo?maxwidth=800&photo_reference=${photoRef}`;
           return photoUrl;
         }
         return null;
